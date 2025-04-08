@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Blog = ({ blog, handleBookMark }) => {
+const Blog = ({ blog, handleBookMark, handleReadingTime }) => {
     const { title, author_name, author_img, coverPhoto, hashtags, posted_date, reading_time } = blog;
     return (
         <div className='border-2 p-2 m-2 rounded-sm'>
@@ -26,7 +26,7 @@ const Blog = ({ blog, handleBookMark }) => {
                     {hashtags.map((hash, index) => <span key={index} className='text-gray-400 pe-2'>{hash}</span>)}
                 </div>
                 <div>
-                    <a className='underline text-purple-500' href='#'>Mark as read</a>
+                    <button onClick={() => handleReadingTime(blog)} className='underline text-purple-500 cursor-pointer' >Mark as read</button>
                 </div>
             </div>
         </div>

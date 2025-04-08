@@ -11,9 +11,15 @@ function App() {
 
   const handleBookMark = (blog) => {
     setBookMark([...bookMark, blog]);
+
+  }
+  const handleReadingTime = (blog) => {
     const times = blog.reading_time[0];
     const time = parseInt(times);
     setReadingTime(readingTime + time);
+
+    const remainingBookmark = bookMark.filter(booked => booked.id !== blog.id);
+    setBookMark(remainingBookmark);
   }
 
   return (
@@ -21,7 +27,7 @@ function App() {
       <Navbar></Navbar>
       <div className="main-container flex container mx-auto gap-10">
         <div className="left-condatiner w-[70%]">
-          <Blogs handleBookMark={handleBookMark} ></Blogs>
+          <Blogs handleBookMark={handleBookMark} handleReadingTime={handleReadingTime}></Blogs>
         </div>
         <div className="right-container w-[30%]">
           <div className='border-2 p-4 rounded-sm border-purple-500'>
